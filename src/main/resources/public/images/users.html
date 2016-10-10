@@ -1,0 +1,56 @@
+<div class="row" id="export">
+	<div class="col-md-12">
+		<h3 class="dteams">Users</h3>
+		<table class="table">
+			<tr>
+				<th>ID</th>
+				<th>Username</th>
+				<th>Name</th>
+				<th>Last Name</th>
+				<th>Role</th>
+				<th>Email</th>
+				<th>
+					<a class="btn btn-success btn-xs" role="button" ng-click="pdf()" data-html2canvas-ignore="true">
+                       <span class="">PDF</span>
+                   </a>
+				</th>
+				<th>
+					<a class="btn btn-success btn-xs" role="button" ng-click="excel()" data-html2canvas-ignore="true">
+                       <span class="">EXCEL</span>
+                   </a>
+				</th>
+				<th>
+					<a class="btn btn-success btn-xs" role="button" ng-click="openModal()" data-html2canvas-ignore="true">
+                       <span class="">CERATE NEW</span>
+                   </a>
+				</th>
+				
+				
+			</tr>
+			<tr ng-repeat="user in users">
+				<td>{{ user.id }}</td>
+				<td>{{ user.username }}</td>
+				<td>{{ user.name }}</td>
+				<td>{{ user.lastName }}</td>
+				<td>{{ user.role }}</td>
+				<td>{{ user.email }}</td>
+				<td style="width:65px;text-align:right;">
+                   <a class="btn btn-primary btn-xs" role="button" ng-click="openModal(user)" data-html2canvas-ignore="true">
+                       <span class="">EDIT</span>
+                   </a>
+                </td>
+                <td style="width:65px;text-align:right;">
+                   <a class="btn btn-info btn-xs" role="button" ng-click="passwordModal(user)" data-html2canvas-ignore="true">
+                       <span class="">CHANGE PASSWORD</span>
+                   </a>
+                </td>
+				<td style="width:65px;text-align:right;">
+                   <a class="btn btn-danger btn-xs" role="button" ng-click="deleteUser(user.id)" ng-show="username != user.username" data-html2canvas-ignore="true">
+                       <span class="">DELETE</span>
+                   </a>
+                </td>
+                
+			</tr>
+		</table>
+	</div>
+</div>

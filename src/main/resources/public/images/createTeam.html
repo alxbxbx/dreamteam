@@ -1,0 +1,46 @@
+<div class="simpleDemo row">
+<div class="col-md-12">
+    <div class="row">
+        <div ng-repeat="(listName, list) in dnd.lists" class="col-md-4">
+        	<div class="form-group" ng-if="listName == 'players'">
+			  <input type="text" class="form-control" id="usr" ng-model="searchText" ng-change="search(searchText)" placeholder="Search player">
+			</div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title" ng-if="listName == 'listOfAttendingPlayers'">Dream Team</h3>
+                    <h3 class="panel-title" ng-if="(listName == 'players')">{{ player.position }}
+                    	<a ng-if="position != 5" href="" ng-click="filterPlayers(1)" style="float:right; margin-left: 5px" class="btn btn-success btn-xs" role="button">
+                    		<span class="">Next</span> 
+                		</a>
+                		<a ng-if="position != 1" href="" ng-click="filterPlayers(-1)" style="float:right" class="btn btn-success btn-xs" role="button">
+                    		<span class="">Previous</span> 
+                		</a>
+                    </h3>	
+                </div>
+                <ul dnd-list="list" class="myLists">
+				    <!-- The dnd-draggable directive makes an element draggable and will
+				         transfer the object that was assigned to it. If an element was
+				         dragged away, you have to remove it from the original list
+				         yourself using the dnd-moved attribute -->
+				    <li ng-repeat="item in list"
+				        dnd-draggable="item"
+				        dnd-moved="list.splice($index, 1)"
+				        dnd-effect-allowed="move"
+				        dnd-selected="models.selected = item"
+				        ng-class="{'selected': models.selected === item}"
+				        >
+				        {{item.firstname}} {{ item.lastname }} {{ item.pos[0] }} {{ item.pos[1] }}
+				    </li>
+				</ul>
+				
+            </div>
+            <div class="form-group" ng-if="listName == 'listOfAttendingPlayers'">
+			  <label for="usr">Dream Team name:</label>
+			  <input type="text" class="form-control" id="usr" ng-model="teamName">
+			  <button type="button" class="btn btn-success saveBtn" ng-click="saveTeam(teamName)">Save</button>
+			</div>
+        </div>
+    </div>
+
+</div>
+</div>

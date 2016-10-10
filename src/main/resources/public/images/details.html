@@ -1,0 +1,54 @@
+<div class="row" id="export">
+	<div class="col-md-12">
+		<h3 class="dteams">Dream team details</h3>
+		<table class="table">
+			<tr>
+				<th>Team name</th>
+				<th>Overall index</th>
+				
+				<th><a class="btn btn-success btn-xs" role="button" ng-click="pdf()" data-html2canvas-ignore="true">
+                       <span class="">Pdf</span>
+                   </a>
+                </th>
+                <th><a class="btn btn-success btn-xs" role="button" ng-click="excel()" data-html2canvas-ignore="true">
+                       <span class="">Excel</span>
+                   </a>
+                </th>
+                <th colspan="4"></th>
+			</tr>
+			<tr>
+				<td>{{ team.name }}</td>
+				<td>{{ team.successIndex }}</td>
+				<td colspan="6"></td>
+				
+			</tr>
+		</table>
+		<table class="table">
+			<tr>
+				<th>Player name</th>
+				<th>Positions</th>
+				<th>Birth</th>
+				<th>Points</th>
+				<th>Rebounds</th>
+				<th>Assists</th>
+				<th>Steals</th>
+				<th>Blocks</th>
+				<th>Turnovers</th>
+				<th>Misses</th>
+			</tr>
+			<tr ng-repeat="player in players">
+				<td>{{ player.firstname }} {{ player.lastname }}</td>
+				<td>{{ player.pos }}</td>
+				<td>{{ player.year }}</td>
+				<td>{{ player.pts}}</td>
+				<td>{{ player.reb}}</td>
+				<td>{{ player.asts}}</td>
+				<td>{{ player.stl}}</td>
+				<td>{{ player.blk}}</td>
+				<td>{{ player.to}}</td>
+				<td>{{ (player.fga - player.fgm) + (player.fta - player.ftm)}}</td>
+				
+			</tr>
+		</table>
+	</div>
+</div>
