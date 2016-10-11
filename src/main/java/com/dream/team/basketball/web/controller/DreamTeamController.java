@@ -18,7 +18,7 @@ import com.dream.team.basketball.service.DreamTeamService;
 import com.dream.team.basketball.web.dto.DreamTeamDTO;
 
 @RestController
-@RequestMapping("api/dreamteam")
+@RequestMapping("/api/dreamteam")
 public class DreamTeamController {
 	
 	@Autowired 
