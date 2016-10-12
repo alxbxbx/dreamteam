@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.dream.team.basketball.web.controller.DreamTeamController;
@@ -23,8 +22,7 @@ import com.dream.team.basketball.web.controller.DreamTeamController;
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 public class EndpointIT{
 	
-//	@Autowired
-//    private WebApplicationContext webApplicationContext;
+
 	@Autowired
 	DreamTeamController dtc;
 	
@@ -40,7 +38,7 @@ public class EndpointIT{
     public void accessToDreamTeam() throws Exception {
 		MockHttpServletRequestBuilder req = options("/api/dreamteam");
 		req.header("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsic3ByaW5nLWJvb3QtYXBwbGljYXRpb24iXSwidXNlcl9uYW1lIjoiYWx4Iiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MjEwNjkxNzExNSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiIwOWE2ZjE5ZS1jOTU3LTQyNGYtYTZlNi0xZDg3OGU5ZTBmZGUiLCJjbGllbnRfaWQiOiJ0cnVzdGVkLWFwcCJ9.L2VhY3djSKFEK9RiQBmlk_7VqfWyiGRtDhqOf3avofw");
-        mockMvc.perform(req).andDo(MockMvcResultHandlers.log())
+        mockMvc.perform(req)
         .andExpect(status().isOk());
         
     }
@@ -49,7 +47,7 @@ public class EndpointIT{
     public void accessToPlayers() throws Exception {
 		MockHttpServletRequestBuilder req = options("/api/dreamteam/17");
 		req.header("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsic3ByaW5nLWJvb3QtYXBwbGljYXRpb24iXSwidXNlcl9uYW1lIjoiYWx4Iiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl0sImV4cCI6MjEwNjkxNzExNSwiYXV0aG9yaXRpZXMiOlsiUk9MRV9BRE1JTiJdLCJqdGkiOiIwOWE2ZjE5ZS1jOTU3LTQyNGYtYTZlNi0xZDg3OGU5ZTBmZGUiLCJjbGllbnRfaWQiOiJ0cnVzdGVkLWFwcCJ9.L2VhY3djSKFEK9RiQBmlk_7VqfWyiGRtDhqOf3avofw");
-        mockMvc.perform(req).andDo(MockMvcResultHandlers.log())
+        mockMvc.perform(req)
         .andExpect(status().isOk());
     }
 	

@@ -23,6 +23,9 @@ public class DreamTeamService {
 	}
 	
 	public DreamTeam save(DreamTeam dreamTeam){
+		if((dreamTeam.getName() == null) && (dreamTeam.getPlayers() == null)){
+			return null;
+		}
 		return dtr.save(dreamTeam);
 	}
 	
