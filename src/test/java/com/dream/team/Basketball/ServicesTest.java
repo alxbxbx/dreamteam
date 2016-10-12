@@ -1,22 +1,20 @@
 package com.dream.team.Basketball;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.dream.team.basketball.entity.DreamTeam;
 import com.dream.team.basketball.service.DreamTeamService;
+import com.dream.team.basketball.web.controller.DreamTeamController;
 
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 public class ServicesTest {
+	
+	DreamTeamController dtc = new DreamTeamController();
 	
 	private DreamTeamService dts;
 	

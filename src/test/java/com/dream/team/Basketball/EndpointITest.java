@@ -20,7 +20,7 @@ import com.dream.team.basketball.web.controller.DreamTeamController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
-public class EndpointIT{
+public class EndpointITest{
 	
 
 	@Autowired
