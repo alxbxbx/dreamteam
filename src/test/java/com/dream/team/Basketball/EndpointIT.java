@@ -34,6 +34,7 @@ public class EndpointIT{
                 .build();   
     }
 	
+	//Testing get all method on rests service
 	@Test
     public void accessToDreamTeam() throws Exception {
 		MockHttpServletRequestBuilder req = options("/api/dreamteam");
@@ -43,6 +44,7 @@ public class EndpointIT{
         
     }
 	
+	//Testing get one method on rest service
 	@Test
     public void accessToPlayers() throws Exception {
 		MockHttpServletRequestBuilder req = options("/api/dreamteam/17");
