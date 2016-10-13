@@ -25,6 +25,8 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
+	
+	//Only user authorized with grant type ADMIN can access methods in UserController
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<UserDTO>> getAll(){

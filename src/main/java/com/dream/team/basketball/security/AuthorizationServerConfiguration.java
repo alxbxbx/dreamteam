@@ -25,6 +25,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	@Value("${resource.id:spring-boot-application}")
     private String resourceId;
     
+	//Token lasts one hour
     @Value("${access_token.validity_period:3600}")
     int accessTokenValiditySeconds = 3600;
 

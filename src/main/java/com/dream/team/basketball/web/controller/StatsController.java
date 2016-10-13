@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/stats")
 public class StatsController {
 	
+	
+	//Method communicates with external API and retrieves players' statistics
 	@PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
 	@RequestMapping(method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<String> get(){

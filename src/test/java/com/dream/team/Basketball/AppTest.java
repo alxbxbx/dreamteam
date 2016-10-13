@@ -5,6 +5,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+//Generic test
 /**
  * Unit test for simple App.
  */

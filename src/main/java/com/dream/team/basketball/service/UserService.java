@@ -28,6 +28,7 @@ public class UserService implements UserDetailsService {
 			return null;
 	}
 	
+	//Return just active users
 	public List<User> findAll(){
 		List<User> users = userRepository.findAll();
 		List<User> activeUsers = new ArrayList<User>();
@@ -40,6 +41,7 @@ public class UserService implements UserDetailsService {
 		return activeUsers;
 	}
 	
+	//Return deleted users (active status = 0)
 	public List<User> inactiveUsers(){
 		List<User> users = userRepository.findAll();
 		List<User> activeUsers = new ArrayList<User>();
@@ -52,6 +54,7 @@ public class UserService implements UserDetailsService {
 		return activeUsers;
 	}
 	
+	//Return users waiting to be approved
 	public List<User> usersForApprove(){
 		List<User> users = userRepository.findAll();
 		List<User> activeUsers = new ArrayList<User>();
@@ -80,7 +83,8 @@ public class UserService implements UserDetailsService {
 		userRepository.save(user);
 		return true;
 	}
-
+	
+	//Oauth uses this method to identify user
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepository.findUserByUsername(username);

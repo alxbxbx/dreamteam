@@ -86,10 +86,13 @@ public class ExportController {
 	        writableWorkbook.write();
 	        writableWorkbook.close();
 	        
+	        
+	        //Setting type of response
 	        String mimeType = "application/octet-stream";
             response.setContentType(mimeType);
             response.setContentLength((int) exlFile.length());
 	        
+            //Setting header content
 	        String headerKey = "Content-Disposition";
             String headerValue = String.format("attachment; filename=\"%s\"",
                     exlFile.getName());
@@ -125,6 +128,7 @@ public class ExportController {
 	        WritableSheet writableSheet = writableWorkbook.createSheet(
 	                "Sheet1", 0);
 	        
+	        //Formating sheets and layout
 	        Label tn = new Label(0, 0, "Team name");
 	        Label oi = new Label(1, 0, "Overal index");
 	        Label teamName = new Label(0, 1, dt.getName());
@@ -159,6 +163,7 @@ public class ExportController {
 	        writableSheet.addCell(to);
 	        writableSheet.addCell(misses);
 	        
+	        //Getting statistics from another service
 	        URL players = new URL("http://localhost:8888/api/stats");
 	        URLConnection yc = players.openConnection();
 	        BufferedReader in = new BufferedReader(
@@ -171,6 +176,8 @@ public class ExportController {
 	        JSONObject jsonObject = new JSONObject(inputLine);
 	        JSONArray jsonPlayers = (JSONArray) jsonObject.get("players");
 	        
+	        
+	        //Iterating through results and writting in excel
 	        int counter = 4;
 	        for(String strId : dt.getPlayers()){
 	        	for(int i=0; i<jsonPlayers.length(); i++){
