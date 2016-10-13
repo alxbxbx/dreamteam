@@ -1,6 +1,5 @@
 package com.dream.team.basketball.security;
 
-import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -17,14 +16,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.dream.team.basketball.service.UserService;
-import com.dream.team.basketball.web.controller.ExportController;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
-	private final static Logger LOGGER = Logger.getLogger(ExportController.class.getName());
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -50,8 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     }
     
     @Override
-    protected void configure(HttpSecurity http) {
-     try {
+    protected void configure(HttpSecurity http) throws Exception {
 		http
 		    .authorizeRequests()
 		    	.antMatchers(HttpMethod.OPTIONS, "/").permitAll()
@@ -60,10 +56,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		    	.antMatchers("/api/**").authenticated()
 		        //.and().httpBasic()
 		        .and().csrf().disable();
-	} catch (Exception e) {
-		LOGGER.info(e.getMessage());
-	}
     }
+
     
     @Override
     @Bean

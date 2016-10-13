@@ -4,8 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.logging.Logger;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/stats")
 public class StatsController {
 	
-	private final static Logger LOGGER = Logger.getLogger(ExportController.class.getName());
+	final static Logger LOGGER = LoggerFactory.getLogger(ExportController.class);
 	
 	//Method communicates with external API and retrieves players' statistics
 	@PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
@@ -35,7 +36,7 @@ public class StatsController {
 	        
 	        return new ResponseEntity<String>(inputLine, HttpStatus.OK);
 		}catch (Exception e){
-			LOGGER.info(e.getMessage());
+			LOGGER.error(e.getMessage());
 		}
 		
 		return new ResponseEntity<String>(HttpStatus.NOT_FOUND);

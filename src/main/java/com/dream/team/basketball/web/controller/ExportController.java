@@ -9,7 +9,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,6 +16,8 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,7 +41,7 @@ import jxl.write.biff.RowsExceededException;
 @RequestMapping("api/export")
 public class ExportController {
 	
-	private final static Logger LOGGER = Logger.getLogger(ExportController.class.getName());
+	final static Logger LOGGER = LoggerFactory.getLogger(ExportController.class);
 	
 	@Autowired
 	UserService userService;
@@ -74,6 +75,7 @@ public class ExportController {
 	        writableSheet.addCell(new Label(4, 0, "Role"));
 	        writableSheet.addCell(new Label(5, 0, "Email"));
 	        
+	        
 	        int counter = 2;
 	        
 	        for(User user : users){
@@ -105,14 +107,14 @@ public class ExportController {
 	        IOUtils.copy(is, response.getOutputStream());
 	        is.close();
 	        response.flushBuffer();
+	        LOGGER.info("Excel file sent to client");
 	        
-			
 		}catch (RowsExceededException e) {
-			LOGGER.info(e.getMessage());
+			LOGGER.error(e.getMessage());
         } catch (WriteException e) {
-        	LOGGER.info(e.getMessage());
+        	LOGGER.error(e.getMessage());
         }catch(IOException e){
-        	LOGGER.info(e.getMessage());
+        	LOGGER.error(e.getMessage());
         }
 		
 	}
@@ -242,16 +244,17 @@ public class ExportController {
 	        is.close();
 	        response.flushBuffer();
 	        
+	        LOGGER.info("Excel file sent to client");
+	        
 		}catch (RowsExceededException e) {
-			LOGGER.info(e.getMessage());
+			LOGGER.error(e.getMessage());
         } catch (WriteException e) {
-        	LOGGER.info(e.getMessage());
+        	LOGGER.error(e.getMessage());
         }catch(IOException e){
-        	LOGGER.info(e.getMessage());
+        	LOGGER.error(e.getMessage());
         }
 		
 	}
-
 	
 	
 }
