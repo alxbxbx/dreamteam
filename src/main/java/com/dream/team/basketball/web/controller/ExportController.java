@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -38,6 +39,8 @@ import jxl.write.biff.RowsExceededException;
 @RestController
 @RequestMapping("api/export")
 public class ExportController {
+	
+	private final static Logger LOGGER = Logger.getLogger(ExportController.class.getName());
 	
 	@Autowired
 	UserService userService;
@@ -105,11 +108,11 @@ public class ExportController {
 	        
 			
 		}catch (RowsExceededException e) {
-            e.printStackTrace();
+			LOGGER.info(e.getMessage());
         } catch (WriteException e) {
-            e.printStackTrace();
+        	LOGGER.info(e.getMessage());
         }catch(IOException e){
-        	e.printStackTrace();
+        	LOGGER.info(e.getMessage());
         }
 		
 	}
@@ -240,11 +243,11 @@ public class ExportController {
 	        response.flushBuffer();
 	        
 		}catch (RowsExceededException e) {
-            e.printStackTrace();
+			LOGGER.info(e.getMessage());
         } catch (WriteException e) {
-            e.printStackTrace();
+        	LOGGER.info(e.getMessage());
         }catch(IOException e){
-        	e.printStackTrace();
+        	LOGGER.info(e.getMessage());
         }
 		
 	}
