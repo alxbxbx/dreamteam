@@ -83,9 +83,7 @@ public class UserService implements UserDetailsService {
 		userRepository.save(user);
 		return true;
 	}
-	
-	//Oauth uses this method to identify user
-	@Override
+
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepository.findUserByUsername(username);
 		if(user.isActive() && user.isApproved())

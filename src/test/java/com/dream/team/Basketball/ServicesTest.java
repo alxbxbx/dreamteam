@@ -39,11 +39,6 @@ public class ServicesTest {
 		assertEquals(null, dts.save(new DreamTeam()));
 	}
 	
-	@Test
-    public void failTest(){
-		assertTrue(false);
-	}
-	
 	
 
 }

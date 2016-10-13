@@ -108,6 +108,9 @@
 		        <groupId>org.sonarsource.scanner.maven</groupId>
 		        <artifactId>sonar-maven-plugin</artifactId>
 		        <version>3.1.1</version>
+		        <configuration>
+		        	<sonar.jacoco.reportPath>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPath>
+		        </configuration>
 		      </plugin>
 		      <plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
@@ -134,6 +137,36 @@
 		          <skip>${surefire.skip}</skip>
 		        </configuration>
 		      </plugin>
+		      
+
+			 <plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-compiler-plugin</artifactId>
+			  <configuration>
+			   <source>1.5</source>
+			   <target>1.5</target>
+			  </configuration>
+			 </plugin>
+			 <plugin>
+			  <groupId>org.jacoco</groupId>
+			  <artifactId>jacoco-maven-plugin</artifactId>
+			  <version>0.7.5.201505241946</version>
+		      <executions>
+			        <execution>
+			            <id>jacoco-initialize</id>
+			            <goals>
+			                <goal>prepare-agent</goal>
+			            </goals>
+			        </execution>
+			        <execution>
+			            <id>jacoco-site</id>
+			            <phase>package</phase>
+			            <goals>
+			                <goal>report</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			 </plugin>
 	    </plugins>
 	    <pluginManagement>
 	      <plugins>
