@@ -1,6 +1,23 @@
 <div class="row" id="export">
 	<div class="col-md-12">
-		<h3 class="dteams">Users</h3>
+		<div row>
+			<div class="col-md-6">
+				<h3 class="dteams">Users</h3>
+			</div>
+			<div class="col-md-6">
+				<ul class="nav navbar-nav">
+              		<li class="dropdown">
+			    	<a class="dropdown-toggle" data-toggle="dropdown" href="">Export
+			        	<span class="caret"></span></a>
+			        <ul class="dropdown-menu">
+			          <li ng-click="pdf()"><a href="">Pdf</a></li>
+			          <li ng-click="excel()"><a href="">Excel</a></li>
+			        </ul>
+			    </li>
+              	</ul>
+			</div>
+			
+		</div>
 		<table class="table">
 			<tr>
 				<th>ID</th>
@@ -10,22 +27,11 @@
 				<th>Role</th>
 				<th>Email</th>
 				<th>
-					<a class="btn btn-success btn-xs" role="button" ng-click="pdf()" data-html2canvas-ignore="true">
-                       <span class="">PDF</span>
-                   </a>
-				</th>
-				<th>
-					<a class="btn btn-success btn-xs" role="button" ng-click="excel()" data-html2canvas-ignore="true">
-                       <span class="">EXCEL</span>
-                   </a>
-				</th>
-				<th>
 					<a class="btn btn-success btn-xs" role="button" ng-click="openModal()" data-html2canvas-ignore="true">
-                       <span class="">CERATE NEW</span>
+                       <span class="">Create new</span>
                    </a>
 				</th>
-				
-				
+				<th colspan="2"></th>
 			</tr>
 			<tr ng-repeat="user in users">
 				<td>{{ user.id }}</td>
@@ -36,17 +42,17 @@
 				<td>{{ user.email }}</td>
 				<td style="width:65px;text-align:right;">
                    <a class="btn btn-primary btn-xs" role="button" ng-click="openModal(user)" data-html2canvas-ignore="true">
-                       <span class="">EDIT</span>
+                       <span class="">Edit</span>
                    </a>
                 </td>
                 <td style="width:65px;text-align:right;">
                    <a class="btn btn-info btn-xs" role="button" ng-click="passwordModal(user)" data-html2canvas-ignore="true">
-                       <span class="">CHANGE PASSWORD</span>
+                       <span class="">Change password</span>
                    </a>
                 </td>
 				<td style="width:65px;text-align:right;">
                    <a class="btn btn-danger btn-xs" role="button" ng-click="deleteUser(user.id)" ng-show="username != user.username" data-html2canvas-ignore="true">
-                       <span class="">DELETE</span>
+                       <span class="">Delete</span>
                    </a>
                 </td>
                 

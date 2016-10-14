@@ -30,6 +30,7 @@ import com.dream.team.basketball.entity.User;
 import com.dream.team.basketball.service.DreamTeamService;
 import com.dream.team.basketball.service.UserService;
 
+import jxl.CellView;
 import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
@@ -149,6 +150,14 @@ public class ExportController {
 	        Label blk = new Label(7, 3, "Blocks");
 	        Label to = new Label(8, 3, "Turnovers");
 	        Label misses = new Label(9, 3, "Misses");
+	        
+	        CellView colTeamName = writableSheet.getColumnView(0);
+	        colTeamName.setAutosize(true);
+	        writableSheet.setColumnView(0, colTeamName);
+	        
+	        CellView colOveralIndex = writableSheet.getColumnView(1);
+	        colOveralIndex.setAutosize(true);
+	        writableSheet.setColumnView(1, colOveralIndex);
 	        
 	        
 	        writableSheet.addCell(tn);
